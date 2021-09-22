@@ -43,7 +43,7 @@ class General {
 
 
         add_action('admin_init',[$this, 'yagwud_add_role_events'],999);
-        add_action( 'login_enqueue_scripts', [$this, 'my_login_logo'] );
+        add_action('login_enqueue_scripts', [$this, 'my_login_logo'] );
 
         add_action('login_head', [$this, 'add_site_favicon']);
         add_action('admin_head', [$this, 'add_site_favicon']);
@@ -58,11 +58,10 @@ class General {
         add_shortcode( 'render_animation_elements', [$this, 'render_animation_elements'] );
         add_shortcode( 'render_imagetag', [$this, 'c_shortcode_render_image'] );
         add_shortcode( 'wp_version', [$this, 'c_shortcode_version'] );
-        add_shortcode( 'c_post_language_url', [$this, 'c_shortcode_post_languages'] );
-        add_shortcode( 'c_post_locale', [$this, 'c_shortcode_post_locale'] );
-        add_shortcode( 'c_get_categories', [$this, 'c_shortcode_get_categories'] );
         add_shortcode( 'c_option', [$this, 'c_shortcode_option'] );
-        add_shortcode( 'c_socialmedia_list', [$this, 'c_shortcode_socialmedia'] );
+
+
+        add_shortcode( 'y_flyers', [$this, 'shortcode_fliers'] );
 
         add_filter('c_get_pagetitle', [$this, 'c_get_pagetitle']);
         add_filter('c_get_ogobj', [$this, 'c_get_ogobj']);
@@ -72,11 +71,6 @@ class General {
         add_filter('acf/fields/google_map/api', [$this, 'my_acf_google_map_api'] );
         add_filter('use_block_editor_for_post', '__return_false', 10);
         add_filter('use_block_editor_for_post_type', '__return_false', 10);
-        add_filter('c_latest_post', [$this, 'c_latest_post'] );
-        add_filter('c_get_instagram_feed', [$this, 'get_instagram_feed'], 10, 3 );
-        add_filter('c_get_document_info', [$this, 'c_get_document_info'], 10, 1 );
-        add_filter('c_get_team_paging', [$this, 'c_get_team_paging'], 10);
-        add_filter('c_get_option', [$this, 'c_get_option'], 10, 1);
 
         add_filter('acf/fields/wysiwyg/toolbars' , [$this, 'c_toolbars']  );
         add_filter('tiny_mce_before_init', [$this, 'c_tiny_mce_before_init'] );
@@ -206,37 +200,10 @@ class General {
         return $value;
     }
 
-    /*
-        Reders categories for post
-        ToDo: add link
-    */
-    public function c_shortcode_get_categories($args){   
-
-        $categories = get_the_terms($args['pid'],$args['posttype']);
-        if( !empty($categories) && count($categories) > 0 ){
-            $cats = array();
-            foreach($categories as $cat){
-                array_push($cats, $cat->name);
-            }        
-            return implode(" / ", $cats);
-        }else{
-            return '';
-        }
-    }
-
 
     public function c_get_pagetitle(){
 
         $pagetitle = get_the_title() . ' | ';
-        if( get_post_type() == 'portfolio' ){
-            $pagetitle .= get_the_title($this->c_get_option('archive_portfolio')) . ' | ';
-        }else if( get_post_type() == 'service' ){
-            $pagetitle .= get_the_title($this->c_get_option('archive_services')) . ' | ';
-        }else if( get_post_type() == 'team' ){
-            $pagetitle .= get_the_title($this->c_get_option('archive_team')) . ' | ';
-        }else if( get_post_type() == 'post' ){
-            $pagetitle .= get_the_title($this->c_get_option('archive_blog')) . ' | ';
-        }
 
         return  $pagetitle . get_bloginfo();
     }
@@ -261,83 +228,6 @@ class General {
         return $obj;
     }
 
-    public function c_get_option($key){
-
-        $options = get_field('company','option');
-        if($options){
-            $options = array_merge($options,get_field('site','option'));
-            $options = array_merge($options,get_field('integrations','option'));
-        }else{
-            $options = array();
-        }
-
-        if( array_key_exists($key, $options)){
-            return $options[$key];
-        }else{
-            return 'Key ' . $key . ' not found';
-        }
-
-
-    }
-
-
-    public function c_get_team_paging($args){
-        // Get posts
-        global $wp_query;
-        $news_query = array(
-            'post_type' => 'team',
-            'orderby'   => 'menu_order',
-            'order'     => 'ASC',
-            'posts_per_page'   => -1,
-        );
-        $team = get_posts( $news_query ); 
-
-        $count = 0;
-        $active = false;
-        $prev = false;
-        $next = false;
-        foreach($team as $member ){
-            if( $member->ID == get_queried_object_id() ){
-                if( $count > 0 ){
-                    $prev = $team[ $count-1 ];
-                }else{
-                    $prev = $team[ count($team)-1 ];
-                }
-                if( $count <  count($team)-1 ){
-                    $next = $team[ $count+1 ];
-                }else{
-                    $next = $team[ 0 ];
-                }
-                $active = $member;
-            }
-            $count++;
-        }
-
-        return  [
-            'total' => count($team),
-            'current' => ($active->menu_order+1),
-            'prev' => $prev,
-            'next' => $next
-        ];
-    }
-
-    /*
-        Shortcode to output theme options
-    */
-    public function c_shortcode_option($args){
-        return $this->c_get_option($args['key']);
-    }
-
-    public function c_shortcode_socialmedia($args){
-                      
-        $list = '<ul class="c-list-social">';
-        foreach(apply_filters('c_get_option','socialmedia_accounts') as $s_account){
-            $list .= "<li><a class=\"c-icon c-btn-social c-btn-social-".$s_account['icon']." c-ir\" href=\"".$s_account['link']['url']."\" target=\"".$s_account['link']['target']."\"></a></li>";
-        }
-        $list .= "</ul>";
-        return $list;
-
-    }
 
     /*
         Renders an image tag by it's ID
@@ -416,19 +306,6 @@ class General {
         }
         return $content;
     }
-
-    /*
-        Returns default locale
-    */
-    public function c_shortcode_post_locale(){
-        $lang = ICL_LANGUAGE_CODE;
-        $langs = icl_get_languages( 'skip_missing=0' );
-        if( isset( $langs[$lang]['default_locale'] ) ) {
-            return $langs[$lang]['default_locale'];
-        }
-        return "en_US";
-    }
-
 
     /*
         Adds custom CSS to admin
@@ -613,11 +490,26 @@ class General {
 
     }
 
+    public function shortcode_fliers($args){
+
+        $files = scandir( wp_upload_dir()['basedir'] . '/flyers');
+        $index = 1;
+        foreach($files as $file):
+            if( strpos($file,".") > 2 ):
+            ?>
+            <a href="<?= wp_upload_dir()['baseurl']; ?>/flyers/<?= $file;?>" target="_blank" data-index="<?=$index;?>">
+                <img  src="<?= wp_upload_dir()['baseurl']; ?>/flyers/<?= $file;?>"/></a>
+            <script>images.push('<?= wp_upload_dir()['baseurl']; ?>/flyers/<?= $file;?>');</script>
+            <?php
+            $index++;
+            endif;
+        endforeach; 
+    }
+
 
     /*
         Events LIST
     */
-
     function events_list(){
 
         global $wp_query;

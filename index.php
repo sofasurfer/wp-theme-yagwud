@@ -20,7 +20,6 @@ get_template_part('templates/header');
 <div id="pgallery">
 
     <?php
-    error_log(wp_upload_dir()['basedir'] . '/flyers');
     $files = scandir( wp_upload_dir()['basedir'] . '/flyers');
     $index = 1;
     foreach($files as $file):
