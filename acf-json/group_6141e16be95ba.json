@@ -1,0 +1,146 @@
+{
+    "key": "group_6141e16be95ba",
+    "title": "Event",
+    "fields": [
+        {
+            "key": "field_6141e46c1ff76",
+            "label": "Club",
+            "name": "club",
+            "type": "text",
+            "instructions": "The name of the Location\/Club",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_6141e3377f807",
+            "label": "StartDate",
+            "name": "startdate",
+            "type": "date_picker",
+            "instructions": "The Event date",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "d.m.Y",
+            "return_format": "d.m.Y",
+            "first_day": 1
+        },
+        {
+            "key": "field_6141e35c5ff46",
+            "label": "EndDate",
+            "name": "enddate",
+            "type": "date_picker",
+            "instructions": "If the same as StartDate leave empty",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "d.m.Y",
+            "return_format": "d.m.Y",
+            "first_day": 1
+        },
+        {
+            "key": "field_6141e40be74f1",
+            "label": "Event Link",
+            "name": "event_link",
+            "type": "url",
+            "instructions": "Link (URL) to the event page if exists",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_6141f43517ca1",
+            "label": "Ticket Link",
+            "name": "ticket_link",
+            "type": "url",
+            "instructions": "Link (URL) to buy tickets online",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_6141e5235635e",
+            "label": "Location",
+            "name": "location",
+            "type": "google_map",
+            "instructions": "The city or location where the event takes place",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "center_lat": "",
+            "center_lng": "",
+            "zoom": "",
+            "height": ""
+        },
+        {
+            "key": "field_6141e4b5b09f3",
+            "label": "Description",
+            "name": "description",
+            "type": "wysiwyg",
+            "instructions": "Leave empty if no description",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "event"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "modified": 1632320431
+}
