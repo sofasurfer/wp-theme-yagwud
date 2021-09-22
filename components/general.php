@@ -145,8 +145,7 @@ class General {
 
 
     public function my_acf_google_map_api() {
-        //$api['key'] = $this->c_get_option('google_maps_api_key');
-        $api['key'] = 'AIzaSyCiRdwZdvC8are3PWqcCcDqpwsk2buF1cw';
+        $api['key'] = get_field('googlemap_api_key','option');
         return $api;
     }
 
