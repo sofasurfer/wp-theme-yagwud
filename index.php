@@ -20,14 +20,15 @@ get_template_part('templates/header');
 <div id="pgallery">
 
     <?php
-    $files = scandir( get_stylesheet_directory() . '/assets/flyers/');
+    error_log(wp_upload_dir()['basedir'] . '/flyers');
+    $files = scandir( wp_upload_dir()['basedir'] . '/flyers');
     $index = 1;
     foreach($files as $file):
         if( strpos($file,".") > 2 ):
         ?>
-        <a href="<?= get_stylesheet_directory_uri(); ?>/assets/flyers/<?= $file;?>" target="_blank" data-index="<?=$index;?>">
-            <img  src="<?= get_stylesheet_directory_uri(); ?>/assets/flyers/<?= $file;?>"/></a>
-        <script>images.push('<?= get_stylesheet_directory_uri(); ?>/assets/flyers/<?= $file;?>');</script>
+        <a href="<?= wp_upload_dir()['baseurl']; ?>/flyers/<?= $file;?>" target="_blank" data-index="<?=$index;?>">
+            <img  src="<?= wp_upload_dir()['baseurl']; ?>/flyers/<?= $file;?>"/></a>
+        <script>images.push('<?= wp_upload_dir()['baseurl']; ?>/flyers/<?= $file;?>');</script>
         <?php
         $index++;
         endif;
