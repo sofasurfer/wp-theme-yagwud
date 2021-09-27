@@ -19,19 +19,7 @@ get_template_part('templates/header');
 </div>
 <div id="pgallery">
 
-    <?php
-    $files = scandir( wp_upload_dir()['basedir'] . '/flyers');
-    $index = 1;
-    foreach($files as $file):
-        if( strpos($file,".") > 2 ):
-        ?>
-        <a href="<?= wp_upload_dir()['baseurl']; ?>/flyers/<?= $file;?>" target="_blank" data-index="<?=$index;?>">
-            <img  src="<?= wp_upload_dir()['baseurl']; ?>/flyers/<?= $file;?>"/></a>
-        <script>images.push('<?= wp_upload_dir()['baseurl']; ?>/flyers/<?= $file;?>');</script>
-        <?php
-        $index++;
-        endif;
-    endforeach; ?>
+    <?=  apply_filters( 'the_content', get_the_content() ); ?>
         
 </div>
 

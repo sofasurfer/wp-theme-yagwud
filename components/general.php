@@ -102,8 +102,8 @@ class General {
 
         add_post_type_support( 'page', 'excerpt' );
 
-        remove_post_type_support( 'page', 'editor' );
-        remove_post_type_support( 'post', 'editor' );
+        //remove_post_type_support( 'page', 'editor' );
+        //remove_post_type_support( 'post', 'editor' );
         remove_post_type_support( 'project', 'editor' );
         
         // Remove comments page in menu
@@ -162,6 +162,8 @@ class General {
                 'delete_posts' => false,
                 'publish_posts' => false,
                 'upload_files' => true,
+                'manage_categories' => true,
+                'assign_terms' => true
             )
         );
 
@@ -188,6 +190,15 @@ class General {
             $role->add_cap( 'delete_others_events' );
             $role->add_cap( 'delete_private_events' );
             $role->add_cap( 'delete_published_events' );
+            $role->add_cap( 'manage_categories' );
+            $role->add_cap( 'manage_event_categories' );
+            $role->add_cap( 'assign_categories' );
+            $role->add_cap( 'assign_events_categories' );
+            $role->add_cap( 'manage_events_terms' );
+            $role->add_cap( 'edit_events_terms' );
+            $role->add_cap( 'delete_events_terms' );
+            $role->add_cap( 'assign_events_terms' );
+            $role->add_cap( 'assign_terms' );
         
         }
     }
@@ -492,6 +503,7 @@ class General {
 
     public function shortcode_flyers($args){
 
+        ob_start();
         $files = scandir( wp_upload_dir()['basedir'] . '/flyers');
         $index = 1;
         foreach($files as $file):
@@ -503,7 +515,13 @@ class General {
             <?php
             $index++;
             endif;
-        endforeach; 
+        endforeach;
+
+        $output = ob_get_contents();
+        ob_end_clean();
+
+        return $output;
+
     }
 
 

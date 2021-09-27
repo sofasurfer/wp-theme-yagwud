@@ -71,30 +71,30 @@ class PostTypes {
                 'menu_icon' => $icon,
                 'capability_type' => array($name, $name . 's'),
                 'map_meta_cap' => true,
-                // 'capabilities' => [
-                //     // meta caps (don't assign these to roles)
-                //     'edit_post'              => 'edit_' . $name,
-                //     'read_post'              => 'read_' . $name,
-                //     'delete_post'            => 'delete_' . $name,
+                'capabilities' => [
+                    // meta caps (don't assign these to roles)
+                    'edit_post'              => 'edit_' . $name,
+                    'read_post'              => 'read_' . $name,
+                    'delete_post'            => 'delete_' . $name,
 
-                //     // primitive/meta caps
-                //     'create_posts'           => 'create_' . $name . 's',
+                    // primitive/meta caps
+                    'create_posts'           => 'create_' . $name . 's',
 
-                //     // primitive caps used outside of map_meta_cap()
-                //     'edit_posts'             => 'edit_' . $name . 's',
-                //     'edit_others_posts'      => 'manage_' . $name . 's',
-                //     'publish_posts'          => 'manage_' . $name . 's',
-                //     'read_private_posts'     => 'read',
+                    // primitive caps used outside of map_meta_cap()
+                    'edit_posts'             => 'edit_' . $name . 's',
+                    'edit_others_posts'      => 'manage_' . $name . 's',
+                    'publish_posts'          => 'manage_' . $name . 's',
+                    'read_private_posts'     => 'read',
 
-                //     // primitive caps used inside of map_meta_cap()
-                //     'read'                   => 'read',
-                //     'delete_posts'           => 'manage_' . $name . 's',
-                //     'delete_private_posts'   => 'manage_' . $name . 's',
-                //     'delete_published_posts' => 'manage_' . $name . 's',
-                //     'delete_others_posts'    => 'manage_' . $name . 's',
-                //     'edit_private_posts'     => 'edit_' . $name . 's',
-                //     'edit_published_posts'   => 'edit_' . $name . 's'
-                // ],
+                    // primitive caps used inside of map_meta_cap()
+                    'read'                   => 'read',
+                    'delete_posts'           => 'manage_' . $name . 's',
+                    'delete_private_posts'   => 'manage_' . $name . 's',
+                    'delete_published_posts' => 'manage_' . $name . 's',
+                    'delete_others_posts'    => 'manage_' . $name . 's',
+                    'edit_private_posts'     => 'edit_' . $name . 's',
+                    'edit_published_posts'   => 'edit_' . $name . 's'
+                ],
                 'rewrite' => [
                     'slug' => $name,
                     'with_front' => false,
