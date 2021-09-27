@@ -61,7 +61,7 @@ class General {
         add_shortcode( 'c_option', [$this, 'c_shortcode_option'] );
 
 
-        add_shortcode( 'y_flyers', [$this, 'shortcode_fliers'] );
+        add_shortcode( 'y_flyers', [$this, 'shortcode_flyers'] );
 
         add_filter('c_get_pagetitle', [$this, 'c_get_pagetitle']);
         add_filter('c_get_ogobj', [$this, 'c_get_ogobj']);
@@ -490,7 +490,7 @@ class General {
 
     }
 
-    public function shortcode_fliers($args){
+    public function shortcode_flyers($args){
 
         $files = scandir( wp_upload_dir()['basedir'] . '/flyers');
         $index = 1;
@@ -513,14 +513,26 @@ class General {
     function events_list(){
 
         global $wp_query;
+        $today = date("Ymd");
         $events_query = array(
             'post_type' => 'event',
             'order'     => 'ASC',
             'orderby'   => 'startdate',
-            'posts_per_page'   => -1,
+            'posts_per_page'   => -1,          
         );
 
         // Check for filters
+        if( empty($_GET['all']) ){
+            $events_query['meta_query'] = array(
+                'relation'      => 'AND',
+                array(
+                    'key'       => 'startdate',
+                    'value'     => $today,
+                    'compare'   => '>=',
+                ),
+            );
+        }
+
         if( !empty($_GET['bid']) ){
             $events_query['tax_query'] = array(
                 array(
