@@ -52,8 +52,7 @@ class General {
         add_action( 'restrict_manage_posts', [$this, 'tsm_filter_post_type_by_taxonomy']);
 
         add_action('wp_ajax_events_list', [$this, 'events_list']);
-        add_action('wp_ajax_nopriv_events_list', [$this, 'events_list'] );
-        
+        add_action('wp_ajax_nopriv_events_list', [$this, 'events_list'] );        
 
         add_shortcode( 'render_animation_elements', [$this, 'render_animation_elements'] );
         add_shortcode( 'render_imagetag', [$this, 'c_shortcode_render_image'] );
@@ -540,7 +539,7 @@ class General {
         );
 
         // Check for filters
-        if( empty($_GET['all']) ){
+        if( empty($_REQUEST['all']) ){
             $events_query['meta_query'] = array(
                 'relation'      => 'AND',
                 array(
@@ -551,12 +550,12 @@ class General {
             );
         }
 
-        if( !empty($_GET['bid']) ){
+        if( !empty($_REQUEST['bid']) ){
             $events_query['tax_query'] = array(
                 array(
                     'taxonomy' => 'event_category',
                     'field'    => 'slug',
-                    'terms' => $_GET['bid']
+                    'terms' => $_REQUEST['bid']
                 )
             );
         }
@@ -575,7 +574,8 @@ class General {
             );
         }
 
-        echo json_encode($result);
+        // echo json_encode($result);
+        wp_send_json($result);
         wp_die(); 
     }
 

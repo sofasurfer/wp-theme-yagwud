@@ -36,7 +36,7 @@ class Events {
             'not_found_in_trash' => 'Events not found in the trash'
         ], [
             'en' => 'event'
-        ], false, true,['title', 'excerpt', 'thumbnail', 'revisions', 'page-attributes']);
+        ], false, true,['title', 'excerpt', 'thumbnail', 'revisions']);
 
         if(!function_exists("register_field_group"))
             return;

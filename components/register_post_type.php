@@ -93,7 +93,10 @@ class PostTypes {
                     'delete_published_posts' => 'manage_' . $name . 's',
                     'delete_others_posts'    => 'manage_' . $name . 's',
                     'edit_private_posts'     => 'edit_' . $name . 's',
-                    'edit_published_posts'   => 'edit_' . $name . 's'
+                    'edit_published_posts'   => 'edit_' . $name . 's',
+
+ 
+
                 ],
                 'rewrite' => [
                     'slug' => $name,
@@ -130,7 +133,7 @@ class PostTypes {
                     'rewrite' => false
                 ]
             );
-        foreach(['administrator', 'editor'] as $role) {
+        foreach(['administrator', 'editor', 'yagwud_event_maner'] as $role) {
             $role = get_role($role);
             if(!empty($role) && !$role->has_cap('manage_' . $name . 's')) {
                 $role->add_cap('manage_' . $name . 's');
