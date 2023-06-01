@@ -564,7 +564,7 @@ class General {
 
         $result = [];
         foreach( $events as $event ){
-            $result[shows][] =  array(
+            $result['shows'][] =  array(
                 'title' => get_the_title( $event ),
                 'club_name' => get_field( 'club', $event ),
                 'club_city' => get_field( 'location', $event ),
