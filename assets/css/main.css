@@ -1,6 +1,9 @@
 
             body{
                 background-color: black;
+                font-family: 'Montserrat', sans-serif;
+                font-family: 'Radio Canada', sans-serif;     
+                overflow-x: hidden;           
             }
 
             body.overlay{
@@ -50,4 +53,14 @@
             .close:hover:before,
             .close:hover:after {
               width: 4px;
+            }
+
+            #pradio{
+              position:fixed;
+              bottom: 25px;
+              right: 25px;
+              border: 4px solid white;
+              color:white;
+              background-color: black;
+              padding: 20px;
             }

@@ -1,7 +1,7 @@
 <?php
 
 // Namespace declaration
-namespace Neofluxe;
+namespace Sofasurfer;
 
 // Exit if accessed directly 
 defined('ABSPATH') or die;
@@ -143,7 +143,7 @@ class General {
     }
 
     public function c_shortcode_version(){
-        $my_theme = wp_get_theme( 'neofluxe' );
+        $my_theme = wp_get_theme( 'yagwud' );
         if ( $my_theme->exists() ){
             return $my_theme->get( 'Version' );
         }

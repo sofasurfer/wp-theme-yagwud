@@ -1,4 +1,5 @@
 
+        <script src="<?= get_stylesheet_directory_uri(); ?>/assets/js/lib.js"></script>
         <script src="<?= get_stylesheet_directory_uri(); ?>/assets/js/default.js"></script>
 
 
