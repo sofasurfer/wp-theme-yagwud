@@ -62,5 +62,6 @@
               border: 4px solid white;
               color:white;
               background-color: black;
-              padding: 20px;
+              padding: 20px;  
+              z-index: 999;
             }
