@@ -65,3 +65,57 @@
               padding: 20px;  
               z-index: 999;
             }
+
+            #events{
+              position:fixed;
+              bottom: 25px;
+              left: 25px;
+              border: 4px solid white;
+              color:white;
+              background-color: black;
+              padding: 20px;  
+              z-index: 999;
+
+            }
+
+            #events_{
+              border: 3px solid black;
+              border-radius: 5px;
+              overflow: hidden;
+            }
+            
+            #scroll-text_ {
+              /* animation properties */
+              -moz-transform: translateX(100%);
+              -webkit-transform: translateX(100%);
+              transform: translateX(100%);
+              
+              -moz-animation: my-animation 15s linear infinite;
+              -webkit-animation: my-animation 15s linear infinite;
+              animation: my-animation 15s linear infinite;
+            }
+            
+            /* for Firefox */
+            @-moz-keyframes my-animation {
+              from { -moz-transform: translateX(100%); }
+              to { -moz-transform: translateX(-100%); }
+            }
+            
+            /* for Chrome */
+            @-webkit-keyframes my-animation {
+              from { -webkit-transform: translateX(100%); }
+              to { -webkit-transform: translateX(-100%); }
+            }
+            
+            @keyframes my-animation {
+              from {
+                -moz-transform: translateX(100%);
+                -webkit-transform: translateX(100%);
+                transform: translateX(100%);
+              }
+              to {
+                -moz-transform: translateX(-100%);
+                -webkit-transform: translateX(-100%);
+                transform: translateX(-100%);
+              }
+            }

@@ -51,6 +51,7 @@ class General {
         add_action( 'pre_get_posts', [$this, 'event_default_order'], 9 );
         add_action( 'restrict_manage_posts', [$this, 'tsm_filter_post_type_by_taxonomy']);
 
+        add_filter('y_get_events', [$this, 'events_list']);
         add_action('wp_ajax_events_list', [$this, 'events_list']);
         add_action('wp_ajax_nopriv_events_list', [$this, 'events_list'] );        
 
