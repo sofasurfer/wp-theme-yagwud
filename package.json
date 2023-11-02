@@ -1,0 +1,40 @@
+{
+    "name": "wptheme.yagwud",
+    "private": true,
+    "version": "1.0.0",
+    "description": "⚡️ Yagwud Theme",
+    "main": "index.js",
+    "repository": "git@github.com:sofasurfer/wp-theme-yagwud.git",
+    "author": "kilian@sofasurfer.ch",
+    "license": "MIT",
+    "engines": {
+      "node": ">=18.13.0"
+    },
+    "volta": {
+      "node": "18.13.0",
+      "yarn": "1.22.19",
+      "npm": "8.12.1"
+    },
+    "scripts": {
+      "dev": "bud dev",
+      "build": "bud build",
+      "clean": "bud clean",
+      "translate": "npm run translate:pot && npm run translate:js",
+      "translate:pot": "wp i18n make-pot . ./resources/lang/sage.pot --ignore-domain --include=\"app,resources\"",
+      "translate:js": "wp i18n make-json ./resources/lang --pretty-print",
+      "test": "mocha"
+    },
+    "devDependencies": {
+      "@roots/bud": "6.12.3",
+      "@roots/bud-postcss": "6.12.3",
+      "@roots/bud-preset-wordpress": "6.12.3",
+      "@roots/bud-sass": "6.12.3",
+      "mocha": "^10.0.0"
+    },
+    "dependencies": {
+      "@wordpress/block-editor": "^11.1.0",
+      "@wordpress/blocks": "^12.1.0",
+      "@wordpress/components": "^23.1.0",
+      "@wordpress/i18n": "^4.24.0"
+    }
+  }

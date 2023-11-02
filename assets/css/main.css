@@ -1,15 +1,22 @@
 
             body{
-                background-color: black;
                 font-family: 'Montserrat', sans-serif;
                 font-family: 'Radio Canada', sans-serif;     
                 overflow-x: hidden;           
+            }
+            body.gallery{
+              background-color: black;
             }
 
             body.overlay{
                 /*overflow: hidden;*/
             }
 
+            .jumbotron {
+              background-color: black;
+              color: white;
+            }
+            
             a{
                 /*cursor: default;*/
             }

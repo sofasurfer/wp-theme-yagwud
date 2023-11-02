@@ -49,4 +49,30 @@ $(function() {
         e.preventDefault();
         $('body').removeClass('overlay');
     });
+
+
+    $('#pradio').each(function(){
+        // AJAX request
+        $.ajax({
+            type: 'POST',
+            url: ajax_url,
+            data: {
+                action: 'get_radio', // Action name registered in wp_ajax_ hooks
+            },
+            success: function (response) {
+                if (response.success) {
+                    // Update HTML content
+                    $('#pradio div').html(response.data);
+                } else {
+                    // Handle errors
+                    console.log('Error:', response.data);
+                }
+            },
+            error: function (errorThrown) {
+                console.log('AJAX Error:', errorThrown);
+            },
+        });
+    });
+
+
 });

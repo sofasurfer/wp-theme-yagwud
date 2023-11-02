@@ -1,6 +1,12 @@
 
-        <script src="<?= get_stylesheet_directory_uri(); ?>/assets/js/lib.js"></script>
-        <script src="<?= get_stylesheet_directory_uri(); ?>/assets/js/default.js"></script>
+        
+        <script>
+          const ajax_url = '<?=admin_url('admin-ajax.php');?>';
+        </script>
+        <script src="<?= get_stylesheet_directory_uri(); ?>/assets/js/lib.js?v=3"></script>
+
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>        
+        <script src="<?= get_stylesheet_directory_uri(); ?>/assets/js/default.js?v=3"></script>
 
 
         <!-- Matomo -->

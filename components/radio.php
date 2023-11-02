@@ -33,7 +33,15 @@ class Radio {
      */
     private function __construct() {
         add_shortcode( 'get_radio', [$this, 'get_radio']);
+
+
+        add_action('wp_ajax_get_radio', [$this, 'ajax_get_radio']);
+        add_action('wp_ajax_nopriv_get_radio', [$this, 'ajax_get_radio'] );            
     
+    }
+
+    public function ajax_get_radio(){
+        wp_send_json_success($this->get_radio());        
     }
 
     public function get_radio(){
@@ -52,11 +60,17 @@ class Radio {
         if ($status_dat === FALSE) {
             return FALSE;
         }
-        $status_arr = json_decode($status_dat, true);
 
-        if ($status_arr === NULL || !isset($status_arr["icestats"])) {
+        $status_arr = json_decode($status_dat, true);
+        if ($status_arr === NULL || !isset($status_arr["icestats"]) || !isset($status_arr["icestats"]["source"]) ) {
             return FALSE;
         }
+
+        $date = new \DateTime($status_arr["icestats"]["source"]['stream_start'], new \DateTimeZone('UTC'));
+        $date->setTimezone(new \DateTimeZone('Europe/Zurich'));
+
+        $status_arr["icestats"]["source"]['stream_start'] = $date->format('D d.m.Y H:i');
+
         return $status_arr["icestats"]["source"];
     }
   
