@@ -16,7 +16,7 @@
               background-color: black;
               color: white;
             }
-            
+
             a{
                 /*cursor: default;*/
             }
@@ -100,6 +100,11 @@
               -moz-animation: my-animation 15s linear infinite;
               -webkit-animation: my-animation 15s linear infinite;
               animation: my-animation 15s linear infinite;
+            }
+
+            footer{
+              position:fixed;
+              bottom: 0px;
             }
             
             /* for Firefox */
