@@ -6,7 +6,7 @@
         ?>
         <meta charset="utf-8">
         <title><?= $og_info['title']; ?></title>
-        <meta name="author" content="Neofluxe GmbH">
+        <meta name="author" content="Sofasurfer">
         <meta name="description" content="<?= $og_info['description']; ?>">
 
 
