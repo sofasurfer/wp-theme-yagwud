@@ -38,36 +38,21 @@ class Events {
 
     public function get_events(){
 
-        global $wp_query;
-        $today = date("Ymd");
-        $events_query = array(
-            'post_type' => 'event',
-            'order'     => 'DESC',
-            'orderby'   => 'startdate',
-            'posts_per_page'   => -1,
-        );
-        // Check for filters
-        if( empty($_REQUEST['all']) ){
-            $events_query['meta_query'] = array(
-                'relation'      => 'AND',
-                array(
-                    'key'       => 'startdate',
-                    'value'     => $today,
-                    'compare'   => '>=',
-                ),
-            );
-        }
-        
-        $events = get_posts( $events_query );
+        $url = 'https://www.yagwud.com/cms/wp-admin/admin-ajax.php?action=events_list';
+        $content = file_get_contents($url);
+        $json = json_decode($content, true);
 
         ob_start();
-        echo '<div id="scroll-text">';
+        echo '<table>';
         // Check if tours exist
-        foreach( $events as $event) {
-            set_query_var( 'y_event', $event );
-            get_template_part('templates/event');
+        if( !empty($json['shows'][0]) ){
+            foreach($json['shows'] as $item) {
+                set_query_var( 'y_event', $item );
+                get_template_part('templates/event');
+            }    
         }
-        echo '</div>';
+
+        echo '</table>';
         $events = ob_get_clean();
         return $events;
     }

@@ -62,7 +62,14 @@ $(function() {
             success: function (response) {
                 if (response.success) {
                     // Update HTML content
-                    $('#pradio div').html(response.data);
+                    if(response.data && response.data.server_name){
+                        $('#pradio').addClass('online');
+                        $('#pradio h2').text('RADIO: online');
+                    }else{
+                        $('#pradio').removeClass('online');
+                        $('#pradio h2').text('RADIO: offline');
+                    }
+                    
                 } else {
                     // Handle errors
                     console.log('Error:', response.data);

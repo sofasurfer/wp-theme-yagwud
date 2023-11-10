@@ -41,7 +41,7 @@ class Radio {
     }
 
     public function ajax_get_radio(){
-        wp_send_json_success($this->get_radio());        
+        wp_send_json_success($this->get_stream_info('stream.yagwud.com','8000'));        
     }
 
     public function get_radio(){

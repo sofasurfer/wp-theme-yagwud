@@ -550,6 +550,17 @@ class General {
                 ),
             );
         }
+        if( !empty($_REQUEST['passed']) ){
+            $events_query['meta_query'] = array(
+                'relation'      => 'AND',
+                array(
+                    'key'       => 'startdate',
+                    'value'     => $today,
+                    'compare'   => '<',
+                    'type'      => 'DATE',
+                ),
+            );
+        }
 
         if( !empty($_REQUEST['bid']) ){
             $events_query['tax_query'] = array(
@@ -572,6 +583,7 @@ class General {
                 'show_date' => get_field( 'startdate', $event ),
                 'event_link' => get_field( 'event_link', $event ),
                 'ticket_link' => get_field( 'ticket_link', $event ),
+                'category' => get_the_terms($event, 'event_category'),
             );
         }
 
