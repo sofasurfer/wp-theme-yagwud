@@ -17,9 +17,6 @@
               color: white;
             }
 
-            a{
-                /*cursor: default;*/
-            }
             body.overlay #overlay{
                 position: fixed;
                 z-index: 10;
@@ -31,6 +28,14 @@
                 background-size: contain;
                 background-repeat: no-repeat;
                 background-position: center;
+            }
+
+            a{
+              color:white;
+            }
+
+            a:hover{
+              color: #ff6666;
             }
 
             .close {

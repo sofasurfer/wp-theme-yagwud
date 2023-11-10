@@ -1,3 +1,4 @@
+
 <?php 
 $streaminfo = get_query_var( 'get_stream_info' );
 if ( $streaminfo ):
