@@ -64,10 +64,10 @@ $(function() {
                     // Update HTML content
                     if(response.data && response.data.server_name){
                         $('#pradio').addClass('online');
-                        $('#pradio h2').text('LIVE: YES');
+                        $('#pradio h2').text('LIVE');
                     }else{
                         $('#pradio').removeClass('online');
-                        $('#pradio h2').text('LIVE: no');
+                        $('#pradio h2').text('ARCHIVE');
                     }
                     
                 } else {

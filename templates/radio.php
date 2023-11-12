@@ -11,7 +11,7 @@ if ( $streaminfo ):
         <audio src="https://stream.yagwud.com:9005/stream" controls ></audio>
     </div>
 <?php else: ?>
-    <div class="col-md-12">
+    <!--div class="col-md-12">
         <h3>offline :/</h3>
-    </div>
+    </div-->
 <?php endif; ?>
