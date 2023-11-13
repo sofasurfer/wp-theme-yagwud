@@ -57,7 +57,7 @@
         </script>
     </head>
     <body id="top" class="<?= get_field('template'); ?>">
-        <div id="y-menu">
+        <div id="y-offcanvas-menu">
             <?php wp_nav_menu(
                 array(
                     'theme_location' => 'header-menu',
@@ -66,9 +66,9 @@
                 )
             ); ?>
         </div>
-        <input type="checkbox" id="y-overlay" name="y-overlay" />
+        <input type="checkbox" id="y-offcanvas-trigger" name="y-offcanvas" />
         <nav class="">
-            <label for="y-overlay">
+            <label for="y-offcanvas-trigger">
                 <div class="hamburger-lines">
                     <span class="line line1"></span>
                     <span class="line line2"></span>

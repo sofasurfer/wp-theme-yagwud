@@ -8,19 +8,23 @@
                 font-family: 'Radio Canada', sans-serif;     
                 overflow-x: hidden;   
                 display: flex;
-                flex-direction: column;        
+                flex-direction: column;    
+                color: #41464b;    
             }
             body.gallery{
               height: auto;
               background-color: black;
             }
 
-            body.overlay{
-                /*overflow: hidden;*/
-            }
-
             .main-content {
               flex: 1;
+            }
+
+            .y-desktop{
+              display: inline-block;
+            }
+            .y-mobile{
+              display: none;
             }
 
             .jumbotron {
@@ -39,7 +43,12 @@
               text-decoration: none;              
             }
 
+            body #overlay{
+              display: none;
+            }
+
             body.overlay #overlay{
+                display:block;
                 position: fixed;
                 z-index: 10;
                 top: 0px;
@@ -62,20 +71,81 @@
               color: #ff6666;
             }
 
+            .y-cta{
+              padding: 1rem 2rem;
+              color:white;
+              text-transform: uppercase;
+              font-size: 2rem;
+              text-decoration: none;
+              background-color: #ffcc66;
+              border-radius: 10px;
+            }
+
+            .y-cta:hover{
+              color:white;
+              text-decoration: none;
+              background-color: #ff6666;
+            }
+
             table{
               width:100%;
+              margin-bottom: 3rem;
             }
             td{
               padding-top: 2rem;  
               padding-bottom: 2rem;              
               vertical-align: top;
             }
+
+            td.fixdate{
+              width: 20%;
+              padding-left: 0px;
+              padding-right: 20px;
+              transition: padding 0.5s ease;
+            }
+            td.location{
+              width: 50%;
+            }
+            td.category{
+              width: 15%;
+            }
+            td.venue{
+              width: 15%;
+            }
+
             tr{
               border-bottom: solid 1px black;
             }
 
             tr:hover{
-              background-color: lightgray;
+              background-color: #ff6666;
+            }
+            tr:nth-child(even):hover{
+              background-color: #ffcc66;
+            }
+
+            
+
+            tr:hover td.fixdate{
+              padding-left: 20px;
+              padding-right: 0px;
+            }
+
+            tr td.fixdate .date{
+              font-weight: bold;
+            }
+            tr td.fixdate .day{
+              font-size: 1.5rem;
+              margin-right: 10px;
+            }
+            tr td.fixdate .month{
+              font-size: 2rem;
+              font-weight: normal;
+              margin-right: 10px;
+            }
+
+            tr a:hover{
+              color: white;
             }
 
             .close {
@@ -169,41 +239,41 @@
               margin-top: 5rem;
               padding-bottom: 5rem;
             }
-            
-            /* for Firefox */
-            @-moz-keyframes my-animation {
-              from { -moz-transform: translateX(100%); }
-              to { -moz-transform: translateX(-100%); }
+
+            footer a{
+              color:#ff6666;
+              text-decoration: none;
             }
-            
-            /* for Chrome */
-            @-webkit-keyframes my-animation {
-              from { -webkit-transform: translateX(100%); }
-              to { -webkit-transform: translateX(-100%); }
-            }
-            
-            @keyframes my-animation {
-              from {
-                -moz-transform: translateX(100%);
-                -webkit-transform: translateX(100%);
-                transform: translateX(100%);
-              }
-              to {
-                -moz-transform: translateX(-100%);
-                -webkit-transform: translateX(-100%);
-                transform: translateX(-100%);
-              }
+            footer a:hover{
+              color:#ff6666;
+              text-decoration: underline;
             }
 
-            @media only screen and (max-width:800px) {
 
+            @media only screen and (max-width:900px) {
+
+              .y-desktop{
+                display: none;
+              }
+              .y-mobile{
+                display: inline-block;
+              }
 
               .jumbotron h1{
                 font-size: 36px;         
                 margin-bottom: 0px;          
               }
-              table .ticket.subject,
-              table .venue.category{
+
+              td.fixdate{
+                width: 30%;
+              }
+              td.location{
+                width: 70%;
+              }
+              td.category{
+                display: none;
+              }
+              td.venue{
                 display: none;
               }
 

@@ -2,7 +2,7 @@ nav{
     top: 55px;
     right: 50px;
     position: fixed!important;
-    z-index: 100;
+    z-index: 900;
     background-color: black;
     padding: 10px;
     border-radius: 10px;
@@ -35,6 +35,13 @@ nav .hamburger-lines .line {
     background: white;
 }
 
+_nav:hover{
+    background-color: #ffcc66;;
+}
+nav:hover .hamburger-lines .line {
+    background: #ff6666;
+}
+
 nav .hamburger-lines .line1 {
     transform-origin: 0% 0%;
     transition: transform 0.4s ease-in-out;
@@ -50,49 +57,46 @@ nav .hamburger-lines .line3 {
 }
 
 
-#y-menu {
+#y-offcanvas-menu {
     display: none;
     position:fixed;
     top:0;
     left:0;
     width: 100vw;
     height: 100vh;
-    z-index: 12;
+    z-index: 50;
     background-color: black;
     justify-content: center;
     align-items: center;    
 }
 
-body.overlay #y-menu{
+body.y-offcanvas #y-offcanvas-menu{
     display: flex;
 }
 
-body.overlay{
+body.y-offcanvas{
     height: 1px;
     overflow: hidden;
 }
 
-#y-overlay{
+#y-offcanvas-trigger{
     display: none;
 }
 
-#y-overlay:checked + .offcanvas {
-    display: block;
-}
 
-#y-overlay:checked ~ .menu-items {
+#y-offcanvas-trigger:checked ~ .menu-items {
     transform: translateX(0);
 }
 
-#y-overlay:checked ~ nav .hamburger-lines .line1 {
+#y-offcanvas-trigger:checked ~ nav .hamburger-lines .line1 {
     transform: rotate(45deg);
 }
 
-#y-overlay:checked ~ nav .hamburger-lines .line2 {
+#y-offcanvas-trigger:checked ~ nav .hamburger-lines .line2 {
     transform: scaleY(0);
 }
 
-#y-overlay:checked ~ nav .hamburger-lines .line3 {
+#y-offcanvas-trigger:checked ~ nav .hamburger-lines .line3 {
     transform: rotate(-45deg);
 }
 
@@ -125,7 +129,7 @@ body.overlay{
     font-size: 2rem;
 }
 
-@media only screen and (max-width:800px) {
+@media only screen and (max-width:900px) {
 
     nav{
         top: 45px;
