@@ -560,6 +560,7 @@ class General {
                     'type'      => 'DATE',
                 ),
             );
+            $events_query['order'] = 'DESC';
         }
 
         if( !empty($_REQUEST['bid']) ){
@@ -571,6 +572,8 @@ class General {
                 )
             );
         }
+
+        error_log(print_r($events_query,true));
 
         $events = get_posts( $events_query );
 

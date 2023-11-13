@@ -36,9 +36,13 @@ class Events {
     
     }
 
-    public function get_events(){
+    public function get_events($passed){
 
-        $url = 'https://www.yagwud.com/cms/wp-admin/admin-ajax.php?action=events_list';
+        $url = get_site_url() . '/wp-admin/admin-ajax.php?action=events_list';
+        if($passed){
+            $url .= '&passed=true';
+        }
+        error_log('URL: ' . $url );
         $content = file_get_contents($url);
         $json = json_decode($content, true);
 
