@@ -121,6 +121,10 @@ body.overlay{
     color: #ff6666;
 }
 
+.c-header-navigation li.y-menusmall a{
+    font-size: 2rem;
+}
+
 @media only screen and (max-width:800px) {
 
     nav{
