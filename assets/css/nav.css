@@ -52,7 +52,7 @@ nav .hamburger-lines .line3 {
 
 #y-menu {
     display: none;
-    position:absolute;
+    position:fixed;
     top:0;
     left:0;
     width: 100vw;
@@ -65,6 +65,11 @@ nav .hamburger-lines .line3 {
 
 body.overlay #y-menu{
     display: flex;
+}
+
+body.overlay{
+    height: 1px;
+    overflow: hidden;
 }
 
 #y-overlay{
