@@ -1,0 +1,116 @@
+nav{
+    top: 50px;
+    right: 50px;
+    position: fixed!important;
+    z-index: 100;
+    background-color: black;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+nav label{
+    display: inline-block;
+    font-weight: 700;
+    display: block;
+    height: 26px;
+    width: 32px;
+    cursor: pointer;
+    margin-bottom: 0px;
+}
+nav .hamburger-lines {
+    display: block;
+    height: 26px;
+    width: 32px;
+    z-index: 12;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+nav .hamburger-lines .line {
+    display: block;
+    height: 4px;
+    width: 100%;
+    border-radius: 10px;
+    background: white;
+}
+
+nav .hamburger-lines .line1 {
+    transform-origin: 0% 0%;
+    transition: transform 0.4s ease-in-out;
+}
+
+nav .hamburger-lines .line2 {
+    transition: transform 0.2s ease-in-out;
+}
+
+nav .hamburger-lines .line3 {
+    transform-origin: 0% 100%;
+    transition: transform 0.4s ease-in-out;
+}
+
+
+#y-menu {
+    display: none;
+    position:absolute;
+    top:0;
+    left:0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 12;
+    background-color: black;
+    justify-content: center;
+    align-items: center;    
+}
+
+body.overlay #y-menu{
+    display: flex;
+}
+
+#y-overlay{
+    display: none;
+}
+
+#y-overlay:checked + .offcanvas {
+    display: block;
+}
+
+#y-overlay:checked ~ .menu-items {
+    transform: translateX(0);
+}
+
+#y-overlay:checked ~ nav .hamburger-lines .line1 {
+    transform: rotate(45deg);
+}
+
+#y-overlay:checked ~ nav .hamburger-lines .line2 {
+    transform: scaleY(0);
+}
+
+#y-overlay:checked ~ nav .hamburger-lines .line3 {
+    transform: rotate(-45deg);
+}
+
+
+.c-header-navigation{
+    list-style: none;
+    margin:0;
+    padding:0;
+    text-align: center;
+}
+
+.c-header-navigation li{
+    list-style: none;
+    color: white;
+}
+
+.c-header-navigation li a{
+    color: white;
+    font-size: 5rem;
+    margin-bottom: 2rem;
+}
+
+.c-header-navigation li a:hover,
+.c-header-navigation li.current_page_item a{
+    color: #ff6666;
+}

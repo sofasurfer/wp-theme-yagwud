@@ -49,6 +49,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <link rel="stylesheet" href="<?= get_stylesheet_directory_uri(); ?>/assets/css/justifiedGallery.css">
         <link rel="stylesheet" href="<?= get_stylesheet_directory_uri(); ?>/assets/css/main.css?v=<?= do_shortcode('[wp_version]') ;?>">
+        <link rel="stylesheet" href="<?= get_stylesheet_directory_uri(); ?>/assets/css/nav.css?v=<?= do_shortcode('[wp_version]') ;?>">
 
         <script>
             var img_active = 0;
@@ -56,3 +57,22 @@
         </script>
     </head>
     <body id="top" class="<?= get_field('template'); ?>">
+        <div id="y-menu">
+            <?php wp_nav_menu(
+                array(
+                    'theme_location' => 'header-menu',
+                    'container'      => false,
+                    'menu_class'     => 'c-header-navigation',
+                )
+            ); ?>
+        </div>
+        <input type="checkbox" id="y-overlay" name="y-overlay" />
+        <nav class="">
+            <label for="y-overlay">
+                <div class="hamburger-lines">
+                    <span class="line line1"></span>
+                    <span class="line line2"></span>
+                    <span class="line line3"></span>
+                </div>
+            </label>
+        </nav> 

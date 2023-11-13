@@ -75,8 +75,8 @@ class General {
         add_filter('acf/fields/wysiwyg/toolbars' , [$this, 'c_toolbars']  );
         add_filter('tiny_mce_before_init', [$this, 'c_tiny_mce_before_init'] );
 
-        add_filter('nav_menu_css_class' , [$this, 'c_special_nav_class'] , 10 , 2);
-        add_filter('nav_menu_link_attributes', [$this, 'add_class_to_menu'], 10, 4 );
+        //add_filter('nav_menu_css_class' , [$this, 'c_special_nav_class'] , 10 , 2);
+        //add_filter('nav_menu_link_attributes', [$this, 'add_class_to_menu'], 10, 4 );
 
         add_filter( 'parse_query', [$this, 'tsm_convert_id_to_term_in_query']);
 

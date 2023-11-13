@@ -50,6 +50,14 @@ $(function() {
         $('body').removeClass('overlay');
     });
 
+    $('#y-overlay').change(function(){
+        if ($(this).prop('checked')) {
+            $('body').addClass('overlay');
+        } else {
+            $('body').removeClass('overlay');
+        }
+    });
+
 
     $('#pradio').each(function(){
         // AJAX request
@@ -66,8 +74,7 @@ $(function() {
                         $('#pradio').addClass('online');
                         $('#pradio h2').text('LIVE');
                     }else{
-                        $('#pradio').removeClass('online');
-                        $('#pradio h2').text('ARCHIVE');
+                        $('#pradio').remove();
                     }
                     
                 } else {
