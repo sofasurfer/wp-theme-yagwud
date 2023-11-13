@@ -65,7 +65,7 @@ nav .hamburger-lines .line3 {
     width: 100vw;
     height: 100vh;
     z-index: 50;
-    background-color: black;
+    background-color: #ffcc66;
     justify-content: center;
     align-items: center;    
 }
@@ -77,6 +77,10 @@ body.y-offcanvas #y-offcanvas-menu{
 body.y-offcanvas{
     height: 1px;
     overflow: hidden;
+}
+
+body.y-offcanvas nav{
+    background-color: #ffcc66;
 }
 
 #y-offcanvas-trigger{
