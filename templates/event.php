@@ -24,7 +24,7 @@ $item = get_query_var( 'y_event' );
 
         </div>
     </td>
-    <td class="venue subject"  itemprop="name">
+    <td class="venue category"  itemprop="name">
         <?=$item['category'][0]['name'];?>
     </td>
     <td class="venue subject"  itemprop="name">
