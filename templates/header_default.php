@@ -1,5 +1,5 @@
 
-<header class="jumbotron">
+<header class="jumbotron jumbotron-fluid">
     <div class="container">
         <div class="row">
             <div class="col-md-12">        

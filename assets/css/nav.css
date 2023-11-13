@@ -1,5 +1,5 @@
 nav{
-    top: 50px;
+    top: 55px;
     right: 50px;
     position: fixed!important;
     z-index: 100;
@@ -113,6 +113,7 @@ body.overlay{
     color: white;
     font-size: 5rem;
     margin-bottom: 2rem;
+    text-decoration: none;
 }
 
 .c-header-navigation li a:hover,
@@ -123,6 +124,12 @@ body.overlay{
 @media only screen and (max-width:800px) {
 
     nav{
+        top: 45px;
         right: 15px;
+    }
+    
+    .c-header-navigation li a{
+        color: white;
+        font-size: 3rem;
     }
 } 

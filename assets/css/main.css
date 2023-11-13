@@ -1,10 +1,17 @@
+            html, body {
+              height: 100%;
+              margin: 0;
+            }
 
             body{
                 font-family: 'Montserrat', sans-serif;
                 font-family: 'Radio Canada', sans-serif;     
-                overflow-x: hidden;           
+                overflow-x: hidden;   
+                display: flex;
+                flex-direction: column;        
             }
             body.gallery{
+              height: auto;
               background-color: black;
             }
 
@@ -12,9 +19,24 @@
                 /*overflow: hidden;*/
             }
 
+            .main-content {
+              flex: 1;
+            }
+
             .jumbotron {
               background-color: black;
               color: white;
+              padding-top: 48px;
+              padding-bottom: 48px;
+              margin-bottom: 30px;              
+            }
+
+            .jumbotron h1{
+              font-size: 63px;              
+            }
+
+            .jumbotron a{
+              text-decoration: none;              
             }
 
             body.overlay #overlay{
@@ -44,7 +66,9 @@
               width:100%;
             }
             td{
-              padding-bottom: 1rem;              
+              padding-top: 2rem;  
+              padding-bottom: 2rem;              
+              vertical-align: top;
             }
             tr{
               border-bottom: solid 1px black;
@@ -142,6 +166,8 @@
 
             footer{
               height: 5rem;
+              margin-top: 5rem;
+              padding-bottom: 5rem;
             }
             
             /* for Firefox */
@@ -169,9 +195,14 @@
               }
             }
 
-
             @media only screen and (max-width:800px) {
 
+
+              .jumbotron h1{
+                font-size: 36px;         
+                margin-bottom: 0px;          
+              }
+              table .ticket.subject,
               table .venue.category{
                 display: none;
               }
