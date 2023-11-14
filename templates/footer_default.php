@@ -6,7 +6,7 @@
         <div class="col-auto me-auto">
         </div>
         <div class="col-auto">
-            <small>Built by: <a href="https://www.sofasurfer.org" title="Sofasurfer.org" target="_blank">sofasurfer.org</a></small>
+            <small>Builder: <a href="https://www.sofasurfer.org" title="Sofasurfer.org" target="_blank">sofasurfer.org</a></small>
         </div>
     </div>
 </footer>

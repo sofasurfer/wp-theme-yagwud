@@ -50,11 +50,11 @@ $(function() {
         $('body').removeClass('overlay');
     });
 
-    $('#y-overlay').change(function(){
+    $('#y-offcanvas-trigger').change(function(){
         if ($(this).prop('checked')) {
-            $('body').addClass('overlay');
+            $('body').addClass('y-offcanvas');
         } else {
-            $('body').removeClass('overlay');
+            $('body').removeClass('y-offcanvas');
         }
     });
 
