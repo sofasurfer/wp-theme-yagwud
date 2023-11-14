@@ -1,6 +1,47 @@
+let touchStartX = 0;
+let touchEndX = 0;
+
+const swipeElement = document.getElementById('overlay');
+
+if(swipeElement){
+
+    swipeElement.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+    });
+    
+    swipeElement.addEventListener('touchmove', (e) => {
+      touchEndX = e.touches[0].clientX;
+    });
+    
+    swipeElement.addEventListener('touchend', () => {
+      handleSwipe();
+    });
+    
+    function handleSwipe() {
+      const swipeDistance = touchStartX - touchEndX;
+    
+      if (swipeDistance < 50) {
+        if(img_active > 1){
+            img_active = img_active-1;
+        }else{
+            img_active = images.length;
+        }
+        $('#overlay').css('background-image', 'url(' + images[img_active] + ')');
+      } else if (swipeDistance > -50) {
+        if(img_active < images.length){
+            img_active = img_active+1;
+        }else{
+            img_active = 0;
+        }
+        $('#overlay').css('background-image', 'url(' + images[img_active] + ')');
+      }
+    }
+}
 
 
-
+/**
+ * Handel Key navigation for gallery 
+ */
 function checkKey(e) {
     var event = window.event ? window.event : e;
     if( event.keyCode == 37 ){
