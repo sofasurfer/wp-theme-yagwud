@@ -257,6 +257,8 @@
               }
               .y-mobile{
                 display: inline-block;
+                font-size: 1rem;
+                font-weight: normal;
               }
 
               .jumbotron h1{
@@ -266,6 +268,12 @@
 
               td.fixdate{
                 width: 30%;
+              }
+              tr td.fixdate .day{
+                font-size: 2rem;
+              }
+              tr td.fixdate .month{
+                font-size: 1.5rem;
               }
               td.location{
                 width: 70%;
