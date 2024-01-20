@@ -42,7 +42,7 @@ class General {
         add_action('admin_head', [$this, 'my_custom_admin_css']);
 
 
-        add_action('admin_init',[$this, 'yagwud_add_role_events'],999);
+        //add_action('admin_init',[$this, 'yagwud_add_role_events'],999);
         add_action('login_enqueue_scripts', [$this, 'my_login_logo'] );
 
         add_action('login_head', [$this, 'add_site_favicon']);
@@ -86,7 +86,7 @@ class General {
         add_theme_support( 'post-thumbnails' );
         add_theme_support( 'menus' );
 
-        load_theme_textdomain('neofluxe', get_stylesheet_directory() . '/languages');
+        load_theme_textdomain('yagwud', get_stylesheet_directory() . '/languages');
 
 
         if( function_exists('acf_add_options_page') ) {
