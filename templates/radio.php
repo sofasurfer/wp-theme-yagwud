@@ -5,7 +5,7 @@
     if ( $streaminfo ):
     ?>
         <div class="col-md-12">
-            <h2><span style="color:white;background-color:red;">LIVE: </span> <?= $streaminfo['server_description'];?></h2>
+            <h2><span style="color:white;background-color:red;">&nbsp;LIVE&nbsp;</span>&nbsp;&nbsp;<?= $streaminfo['server_description'];?></h2>
             <!--pre>
                 <?php print_r($streaminfo); ?>
             </pre-->
