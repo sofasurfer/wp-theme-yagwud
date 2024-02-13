@@ -3,7 +3,7 @@ $streaminfo = get_query_var( 'get_stream_info' );
 ?>
 <div class="row">
     <div class="col-md-2 mb-4 mb-md-0">
-        <img class="img-fluid" src="<?= get_the_post_thumbnail_url($streaminfo,'large');?>" alt="Responsive image" />
+        <a href="<?= get_field('stream_url',$streaminfo);?>" target="_blank"><img class="img-fluid" src="<?= get_the_post_thumbnail_url($streaminfo,'large');?>" alt="Responsive image" /></a>
     </div>
     <div class="col-md-10">
         <h3><?= get_the_title($streaminfo);?></h3>
