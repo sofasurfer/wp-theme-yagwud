@@ -65,6 +65,21 @@
                     'menu_class'     => 'c-header-navigation',
                 )
             ); ?>
+            <section class="sticky">
+            <div class="bubbles">
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                
+            </div>
+            </section>
         </div>
         <input type="checkbox" id="y-offcanvas-trigger" name="y-offcanvas" />
         <nav class="">
