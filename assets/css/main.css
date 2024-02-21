@@ -4,6 +4,12 @@
             }
             h2{
               margin-bottom: 2rem;
+              font-size: 3rem;
+            }
+            hr{
+              margin: 4rem 0;
+              border-top: 0.5rem solid yellow;
+              opacity: 10;
             }
             body{
                 font-family: 'Montserrat', sans-serif;
@@ -11,15 +17,33 @@
                 overflow-x: hidden;   
                 display: flex;
                 flex-direction: column;    
-                color: #41464b;    
+                color: lightgray;   
+                background-color: #5a53cc; 
             }
             body.gallery{
               height: auto;
               background-color: black;
             }
+            body.default h2{
+              color:aqua;          
+            }
+            body.default h3{
+              color: #ff6666;    
+              font-size: 3rem;
+
+            }
+            
+            body.default strong{
+              color: yellow;
+            }
+
+            .text-meta{
+              color:lightgray;
+            }
 
             .main-content {
               flex: 1;
+              font-size: 1.5rem;
             }
 
             .y-desktop{
@@ -30,7 +54,6 @@
             }
 
             .jumbotron {
-              background-color: black;
               color: white;
               padding-top: 48px;
               padding-bottom: 48px;
@@ -71,6 +94,25 @@
 
             a:hover{
               color: #ff6666;
+            }
+
+            .pagetitle{
+              color: #ff6666;
+            }
+
+            .pagetitle a{
+              color: #ff6666;
+              font-size: 9rem;
+            }
+
+            .pagetitle a:hover{
+              color: aqua;
+            }
+
+            .radio-offline{
+              color:yellow!important;
+              padding: 2rem 0;
+              font-size: 4rem;
             }
 
             .y-cta{
@@ -240,6 +282,8 @@
               height: 5rem;
               margin-top: 5rem;
               padding-bottom: 5rem;
+              font-size: 3rem;
+              line-height: 0rem;
             }
 
             footer a{
@@ -253,7 +297,9 @@
 
 
             @media only screen and (max-width:900px) {
-
+              .pagetitle a{
+                font-size: 4rem;
+              }
               .y-desktop{
                 display: none;
               }
@@ -285,6 +331,10 @@
               }
               td.venue{
                 display: none;
+              }
+
+              footer{
+                font-size: 2rem;
               }
 
             } 

@@ -16,7 +16,7 @@
         </div>
     <?php else: ?>
         <div class="col-md-12">
-            <h2><span style="color:white;background-color:black;">offline :/</span></h2>
+            <h2 class="radio-offline"><span>offline :/</span></h2>
         </div>
     <?php endif; ?>
 </div>

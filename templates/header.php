@@ -57,15 +57,8 @@
         </script>
     </head>
     <body id="top" class="<?= get_field('template'); ?>">
-        <div id="y-offcanvas-menu">
-            <?php wp_nav_menu(
-                array(
-                    'theme_location' => 'header-menu',
-                    'container'      => false,
-                    'menu_class'     => 'c-header-navigation',
-                )
-            ); ?>
-            <section class="sticky">
+
+        <section class="sticky">
             <div class="bubbles">
                 <div class="bubble"></div>
                 <div class="bubble"></div>
@@ -79,15 +72,4 @@
                 <div class="bubble"></div>
                 
             </div>
-            </section>
-        </div>
-        <input type="checkbox" id="y-offcanvas-trigger" name="y-offcanvas" />
-        <nav class="">
-            <label for="y-offcanvas-trigger">
-                <div class="hamburger-lines">
-                    <span class="line line1"></span>
-                    <span class="line line2"></span>
-                    <span class="line line3"></span>
-                </div>
-            </label>
-        </nav> 
+        </section>

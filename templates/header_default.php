@@ -3,23 +3,25 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">        
-                <div class="pagetitle"><h1><a href="/">Yagwud:</a><?=get_the_title();?></h1></div>
+                <div class="pagetitle"><h1><a href="/">Yagwud: <?=get_the_title();?></a></h1></div>
             </div>
         </div>
     </div>
-            <!--section class="sticky">
-            <div class="bubbles">
-                <div class="bubble"></div>
-                <div class="bubble"></div>
-                <div class="bubble"></div>
-                <div class="bubble"></div>
-                <div class="bubble"></div>
-                <div class="bubble"></div>
-                <div class="bubble"></div>
-                <div class="bubble"></div>
-                <div class="bubble"></div>
-                <div class="bubble"></div>
-                
-            </div>
-            </section-->
 </header>
+
+
+<section class="sticky">
+<div class="bubbles">
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    
+</div>
+</section>
