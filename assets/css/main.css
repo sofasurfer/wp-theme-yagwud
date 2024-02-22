@@ -35,10 +35,12 @@
             
             body.default strong{
               color: yellow;
+              font-weight: normal;
             }
 
             .text-meta{
               color:lightgray;
+              font-size: 1.3rem;
             }
 
             .main-content {
