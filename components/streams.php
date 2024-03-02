@@ -36,7 +36,7 @@ class Streams {
     
     }
   
-      public function get_streams($icecast_host, $icecast_port) {
+      public function get_streams($atts) {
         $args = array(
             'post_type'        => 'stream',
             'post_status'      => 'publish',
@@ -44,6 +44,7 @@ class Streams {
             'order'            => 'DESC',
             'posts_per_page'   => - 1,
             'suppress_filters' => false,
+            'category'         => $atts['cat'], 
         );
         $streams = get_posts( $args );
         ob_start();
