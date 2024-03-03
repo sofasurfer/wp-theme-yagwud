@@ -44,7 +44,13 @@ class Streams {
             'order'            => 'DESC',
             'posts_per_page'   => - 1,
             'suppress_filters' => false,
-            'category'         => $atts['cat'], 
+            'tax_query'  => array(
+                array(
+                    'taxonomy' => 'stream_category',
+                    'field' => 'slug',
+                    'terms' => $atts['cat'],
+                ),
+            ), 
         );
         $streams = get_posts( $args );
         ob_start();
