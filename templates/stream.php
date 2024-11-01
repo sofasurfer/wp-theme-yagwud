@@ -4,8 +4,6 @@ $streaminfo = get_query_var( 'get_stream_info' );
 $post_type = get_post_type();
 $taxonomies = get_object_taxonomies($post_type, 'stream_category');
 
-error_log(print_r($taxonomies,true));
-
 if (has_term('video', 'stream_category', $streaminfo)):
 ?>
 <div class="row">

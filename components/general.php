@@ -60,7 +60,6 @@ class General {
         add_shortcode( 'wp_version', [$this, 'c_shortcode_version'] );
         add_shortcode( 'c_option', [$this, 'c_shortcode_option'] );
 
-
         add_shortcode( 'y_flyers', [$this, 'shortcode_flyers'] );
 
         add_filter('c_get_pagetitle', [$this, 'c_get_pagetitle']);
