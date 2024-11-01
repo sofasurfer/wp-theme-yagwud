@@ -1,0 +1,42 @@
+name: 📡 Deployment (🟡STAGING)
+
+on:
+  push:
+    branches: [ deployment ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js 18.13.0
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.13.0
+
+      - name: NPM | yarn - Caching 🚀
+        uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+      - name: NPM | yarn - Install 🔴 🟠 🟡 🟢 🔵 🟣
+        run: yarn install
+
+      - name: NPM | yarn - Build for production 🏗🕌
+        run: yarn build
+
+      - name: RSync Deployments 🚚
+        uses: burnett01/rsync-deployments@6.0.0
+        with:
+          switches: -avzr --delete --prune-empty-dirs --exclude="node_modules" --exclude=".github" --exclude="package.json" --exclude="package-lock.json" --exclude="*.lock" --exclude="release.sh" --exclude="bud.config.mjs" --exclude="*.md" --exclude="*.html" --exclude="src/fonts" --exclude="src/styles" --exclude="src/images" --exclude="src/bud" --exclude="src/templates" --exclude=".nvmrc" --exclude=".gitignore"
+          path: ./
+          remote_path: ${{ vars.REMOTE_PATH }} # example: public_html/tela-intense.ch/wp-content/themes/wptheme.starter
+          remote_host: ${{ vars.REMOTE_HOST }} # example: s094.cyon.net
+          remote_user: ${{ vars.REMOTE_USER }} # example: nflxz
+          remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
