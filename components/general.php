@@ -42,7 +42,7 @@ class General {
         add_action('admin_head', [$this, 'my_custom_admin_css']);
 
 
-        add_action('admin_init',[$this, 'yagwud_add_role_events'],999);
+        //add_action('admin_init',[$this, 'yagwud_add_role_events'],999);
         add_action('login_enqueue_scripts', [$this, 'my_login_logo'] );
 
         add_action('login_head', [$this, 'add_site_favicon']);
@@ -59,7 +59,6 @@ class General {
         add_shortcode( 'render_imagetag', [$this, 'c_shortcode_render_image'] );
         add_shortcode( 'wp_version', [$this, 'c_shortcode_version'] );
         add_shortcode( 'c_option', [$this, 'c_shortcode_option'] );
-
 
         add_shortcode( 'y_flyers', [$this, 'shortcode_flyers'] );
 
@@ -86,7 +85,7 @@ class General {
         add_theme_support( 'post-thumbnails' );
         add_theme_support( 'menus' );
 
-        load_theme_textdomain('neofluxe', get_stylesheet_directory() . '/languages');
+        load_theme_textdomain('yagwud', get_stylesheet_directory() . '/languages');
 
 
         if( function_exists('acf_add_options_page') ) {

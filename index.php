@@ -5,7 +5,7 @@ get_template_part('templates/header');
 
 
 if(get_field('template') == 'default'){
-    get_template_part('templates/header_default');
+    //get_template_part('templates/header_default');
 }
 
 

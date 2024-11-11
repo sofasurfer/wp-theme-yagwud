@@ -115,7 +115,8 @@ $(function() {
                         $('#pradio').addClass('online');
                         $('#pradio h2').text('LIVE');
                     }else{
-                        $('#pradio').remove();
+                        $('#pradio').addClass('online');
+                        $('#pradio h2').text('RADIO');
                     }
                     
                 } else {
