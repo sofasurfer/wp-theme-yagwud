@@ -11,7 +11,7 @@
             </pre-->
         </div>
         <div class="col-md-12">
-            <audio src="https://stream.yagwud.com:9005/stream" controls ></audio>
+            <audio src="https://stream.yagwud.com:9005/stream" controls data-title="<?= $streaminfo['server_description'];?>"></audio>
             <p>Started: <?= $streaminfo['stream_start']; ?></p>
         </div>
     <?php else: ?>

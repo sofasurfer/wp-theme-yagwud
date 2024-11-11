@@ -132,9 +132,10 @@ $(function() {
 
 
     // Select the audio element
-    const audioElement = document.querySelector('audio[data-title]');
+    const audioElements = document.querySelectorAll('audio[data-title]');
 
-    if (audioElement) {
+    audioElements.forEach((audioElement) => {
+
         const trackTitle = audioElement.getAttribute('data-title');
 
         // Function to send events to Matomo
@@ -152,7 +153,7 @@ $(function() {
         audioElement.addEventListener('pause', () => {
             trackAudioEvent('Stop');
         });
-    }
+    });
 
 
 });
