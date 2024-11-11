@@ -15,7 +15,7 @@ if (has_term('video', 'stream_category', $streaminfo)):
         <h3><?= get_the_title($streaminfo);?></h3>
         <p><strong><?= get_field('description',$streaminfo);?></strong></p>
 
-        <audio controls="controls">
+        <audio controls="controls" data-title="<?= get_the_title($streaminfo);?>">
         <source src="<?= get_field('stream_url',$streaminfo);?>" type="audio/mp3" />
         Your browser does not support the audio tag.
         </audio>
