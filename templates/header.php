@@ -5,7 +5,7 @@
         $og_info = apply_filters('c_get_ogobj','');
         ?>
         <meta charset="utf-8">
-        <title>*<?= $og_info['title']; ?></title>
+        <title>**<?= $og_info['title']; ?></title>
         <meta name="author" content="Sofasurfer">
         <meta name="description" content="<?= $og_info['description']; ?>">
 
