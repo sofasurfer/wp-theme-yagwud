@@ -131,4 +131,29 @@ $(function() {
     });
 
 
+    // Select the audio element
+    const audioElements = document.querySelectorAll('audio[data-title]');
+
+    audioElements.forEach((audioElement) => {
+
+        const trackTitle = audioElement.getAttribute('data-title');
+
+        // Function to send events to Matomo
+        function trackAudioEvent(action) {
+            console.log('Track: ' + action + ' ' + trackTitle);
+            _paq.push(['trackEvent', 'Audio', action, trackTitle]);
+        }
+
+        // Listen for the play event (start event)
+        audioElement.addEventListener('play', () => {
+            trackAudioEvent('Start');
+        });
+
+        // Listen for the pause event (stop event)
+        audioElement.addEventListener('pause', () => {
+            trackAudioEvent('Stop');
+        });
+    });
+
+
 });

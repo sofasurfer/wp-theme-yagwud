@@ -67,7 +67,11 @@ nav .hamburger-lines .line3 {
     z-index: 50;
     background-color: #ffcc66;
     justify-content: center;
-    align-items: center;    
+    align-items: center;
+    background-image: url(../images/yagwud.PNG);
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    background-size: 20vw;
 }
 
 body.y-offcanvas #y-offcanvas-menu{

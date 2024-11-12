@@ -4,7 +4,7 @@ $streaminfo = get_query_var( 'get_stream_info' );
 $post_type = get_post_type();
 $taxonomies = get_object_taxonomies($post_type, 'stream_category');
 
-if (has_term('video', 'stream_category', $streaminfo)):
+if (!has_term('video', 'stream_category', $streaminfo)):
 ?>
 <div class="row">
     <div class="col-md-4 mb-4 mb-md-0">
@@ -15,7 +15,7 @@ if (has_term('video', 'stream_category', $streaminfo)):
         <h3><?= get_the_title($streaminfo);?></h3>
         <p><strong><?= get_field('description',$streaminfo);?></strong></p>
 
-        <audio controls="controls">
+        <audio controls="controls" data-title="<?= get_the_title($streaminfo);?>">
         <source src="<?= get_field('stream_url',$streaminfo);?>" type="audio/mp3" />
         Your browser does not support the audio tag.
         </audio>

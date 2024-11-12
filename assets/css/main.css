@@ -170,6 +170,35 @@
               background-color: #ffcc66;
             }
 
+
+            tr,
+            tr a{
+              color: #ff6666;
+            }
+            tr:nth-child(even),
+            tr:nth-child(even) a{
+              color: #ffcc66;
+            }
+            tr:hover,
+            tr:hover a{
+              color: #ffcc66!important;
+            }
+
+            tr:nth-child(even):hover,
+            tr:nth-child(even):hover a{
+              color: #ff6666!important;
+            }
+
+            tr:nth-child(even) h3{
+              color: #ffcc66!important;
+            }
+            tr:hover h3{
+              color: #ffcc66!important;
+            }
+            tr:nth-child(even):hover h3{
+              color: #ff6666!important;
+            }
+
             
 
             tr:hover td.fixdate{
@@ -191,7 +220,7 @@
             }
 
             tr a:hover{
-              color: white;
+              color: black;
             }
 
             .close {
