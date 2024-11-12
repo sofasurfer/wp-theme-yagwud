@@ -23,8 +23,11 @@ jobs:
           rsync -avz --delete \
             --exclude '.git' \
             --exclude '.github' \
+            --exclude '.gitignore' \
             --exclude 'node_modules' \
+            --exclude 'package.json' \
             --exclude 'package-lock.json' \
+            --exclude 'screenshot.png' \
             --exclude 'release.sh' \
             -e "ssh -o StrictHostKeyChecking=no" \
             ./ \
