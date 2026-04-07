@@ -85,15 +85,12 @@ class General {
         add_theme_support( 'post-thumbnails' );
         add_theme_support( 'menus' );
 
-        load_theme_textdomain('yagwud', get_stylesheet_directory() . '/languages');
 
 
         if( function_exists('acf_add_options_page') ) {
             acf_add_options_page();   
         }
     }
-
-
 
     public function c_init(){
 
@@ -109,6 +106,9 @@ class General {
         add_action('admin_menu', function () {
             remove_menu_page('edit-comments.php');
         });        
+
+
+        load_theme_textdomain('yagwud', get_stylesheet_directory() . '/languages');
     }
 
     public function cc_mime_types($mimes = [] ){
@@ -278,10 +278,10 @@ class General {
         //             '(min-width: 1000px) 900px,    // ViewPort mindestens 1000 px, nimm Bild mit 900px Breite'.
         //             '100vw"';
 
-        $image .= '<noscript><img src="'.$scr_full[0].'" alt="'.$alt.'" /></noscript>';
+        $image = '<noscript><img src="'.$scr_full[0].'" alt="'.$alt.'" /></noscript>';
         $image .= '<img class="lazy" sizes="'.$sizes.'" data-srcset="'.$srcset.'" data-src="'.$scr_large[0].'" alt="'.$alt.'" />';
 
-        if( $args['legend'] ){            
+        if (!empty($args['legend'])) {          
             $attachment = get_post( $args['id'] );
             if($attachment){
                 $image .= '<figcaption class="c-legend">' . $attachment->post_excerpt. '</figcaption>';

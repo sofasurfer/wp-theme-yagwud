@@ -157,3 +157,75 @@ $(function() {
 
 
 });
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    console.log("DOM fully loaded and parsed");
+
+    const thumbs = document.querySelectorAll(".audio-thumb");
+    const audios = document.querySelectorAll("audio");
+
+    thumbs.forEach(thumb => {
+        thumb.addEventListener("click", () => {
+            const id = thumb.dataset.audioId;
+
+            // stop all
+            audios.forEach(audio => {
+            audio.pause();
+            audio.currentTime = 0;
+            });
+
+            // play selected
+            const target = document.querySelector(`audio[data-audio-id="${id}"]`);
+            if (target) {
+            target.play();
+            }
+        });
+    });
+
+    audios.forEach(audio => {
+        audio.addEventListener("play", () => {
+            audios.forEach(other => {
+            if (other !== audio) {
+                other.pause();
+                other.currentTime = 0;
+            }
+            });
+        });
+    });
+
+
+
+  document.querySelectorAll("li[data-time]").forEach(li => {
+    li.addEventListener("click", () => {
+
+      const time = li.dataset.time; // e.g. "1:35"
+      const [min, sec] = time.split(":").map(Number);
+      const seconds = min * 60 + sec;
+
+      // find the closest audio in the same container
+      const container = li.closest(".col-md-8");
+      const audio = container.querySelector("audio");
+
+      if (!audio) return;
+
+      // stop all other audios
+      audios.forEach(a => {
+        if (a !== audio) {
+          a.pause();
+          a.currentTime = 0;
+        }
+      });
+
+      // seek + play
+      audio.currentTime = seconds;
+      audio.play();
+    });
+  });
+
+
+
+});
