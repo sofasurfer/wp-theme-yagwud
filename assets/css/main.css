@@ -327,7 +327,44 @@
             }
 
 
+            .audio-thumb {
+              position: relative;
+              cursor: pointer;
+            }
+
+            .play-btn {
+              display:none;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              background: rgba(0,0,0,0.6);
+              color: white;
+              font-size: 24px;
+              padding: 10px 14px;
+              border-radius: 50%;
+              pointer-events: none;
+            }
+
+            .stream-highlights{
+              list-style: none;
+              padding:0;
+              margin:0;
+            }
+            .stream-highlights li{
+              cursor: pointer;
+              padding: 2px 5px;
+              display: inline-block;
+
+              border: solid 1px #ff6666;
+              background-color: #ff6666;
+            }
+
+
             @media only screen and (max-width:900px) {
+              .play-btn {
+                display:block;
+              }
               .pagetitle a{
                 font-size: 4rem;
               }

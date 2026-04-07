@@ -8,17 +8,29 @@ if (!has_term('video', 'stream_category', $streaminfo)):
 ?>
 <div class="row">
     <div class="col-md-4 mb-4 mb-md-0">
-        <a href="<?= get_the_post_thumbnail_url($streaminfo,'full');?>" target="_blank"><img class="img-fluid" src="<?= get_the_post_thumbnail_url($streaminfo,'large');?>" alt="Responsive image" /></a>
+        <div class="audio-thumb" data-audio-id="astream-<?= $streaminfo->ID; ?>">
+            <img class="img-fluid" src="<?= get_the_post_thumbnail_url($streaminfo,'large');?>" alt="Responsive image" />
+            <span class="play-btn">▶</span>
+        </div>
     </div>
     <div class="col-md-8">
         <a class="text-meta" href="<?= get_field('stream_url',$streaminfo);?>" target="_blank"><?= get_the_date('d. M Y',$streaminfo);?></a>
         <h3><?= get_the_title($streaminfo);?></h3>
         <p><strong><?= get_field('description',$streaminfo);?></strong></p>
 
-        <audio controls="controls" data-title="<?= get_the_title($streaminfo);?>">
+        <audio controls="controls" data-audio-id="astream-<?= $streaminfo->ID; ?>" data-title="<?= get_the_title($streaminfo);?>">
         <source src="<?= get_field('stream_url',$streaminfo);?>" type="audio/mp3" />
         Your browser does not support the audio tag.
         </audio>
+
+        <?php if (get_field('highlights',$streaminfo)):?>
+            <ul class="stream-highlights">
+                <?php foreach (get_field('highlights',$streaminfo) as $highlight):?>
+                <li data-time="<?= $highlight['time'];?>"><?= $highlight['title'];?></li>
+                <?php endforeach;?>
+            </ul>
+        <?php endif;?>
+
     </div>
     <div class="col-md-12">
         <hr/>
