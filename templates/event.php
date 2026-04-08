@@ -1,7 +1,14 @@
 <?php
 
 $item = get_query_var( 'y_event' );
-
+$city = '';
+if(!empty($item['club_city']['city'])){
+    $city = $item['club_city']['city'];
+}else if(!empty($item['club_city']['state'])){
+    $city = $item['club_city']['state'];
+}else if(!empty($item['club_city']['country_short'])){
+    $city = $item['club_city']['country_short'];
+}
 ?>
 <tr class="bounce-table animation-element">
     <td class="fixdate subject">
@@ -18,8 +25,8 @@ $item = get_query_var( 'y_event' );
 
             <h3><?=$item['title'];?></h3>
             
-            <?php if ($item['event_link']): ?>
-                <a target="_blank" itemprop="url"  title="<?=$item['club_name'];?> - <?=$item['club_city']['city'];?> (<?=$item['club_city']['country_short'];?>)" href="<?=$item['event_link'];?>"><?=$item['club_name'];?></a>
+            <?php if ($item['event_link'] && !empty($item['club_city'])): ?>
+                <a target="_blank" itemprop="url"  title="<?=$item['club_name'];?> - <?=$city;?>" href="<?=$item['event_link'];?>"><?=$item['club_name'];?></a>
             <?php else: ?>
                 <?=$item['club_name'];?>
             <?php endif; ?>
@@ -30,9 +37,13 @@ $item = get_query_var( 'y_event' );
         </div>
     </td>
     <td class="category"  itemprop="name">
-        <?=$item['category'][0]['name'];?>
+        <?php
+        if(!empty($item['category'])){
+            echo $item['category'][0]['name'];
+        }
+        ?>
     </td>
     <td class="venue subject"  itemprop="name">
-        <div class="location-small"><?=$item['club_city']['city'];?> (<?=$item['club_city']['country_short'];?>)</div>
+        <div class="location-small"><?=$city;?> <?php if(!empty($item['club_city']) && !empty($item['club_city']['country_short'])): ?> (<?=$item['club_city']['country_short'];?>) <?php endif; ?></div>
     </td>
 </tr>
