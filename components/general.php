@@ -410,7 +410,14 @@ class General {
                 echo get_field( 'club', $event );
                 break;
             case 'club_city' :
-                echo get_field( 'location', $event )['city'];
+                $location = get_field( 'location', $event );
+                if( !empty($location['city']) ){
+                    echo $location['city'];
+                }else if( !empty($location['state']) ){
+                    echo $location['state'];
+                }else if( !empty($location['country_short']) ){
+                    echo $location['country_short'];
+                }
                 break;
             case 'show_date' :
                 echo get_field( 'startdate', $event );
