@@ -53,27 +53,66 @@ class Radio {
         return $output;
     }
 
-    public function get_stream_info($icecast_host, $icecast_port) {
-        $status_url = "http://{$icecast_host}:{$icecast_port}/status-json.xsl";
-        $status_dat = @file_get_contents($status_url);
+public function get_stream_info($icecast_host, $icecast_port, $mount = '/stream') {
 
-        if ($status_dat === FALSE) {
-            return FALSE;
-        }
+    $status_url = "http://{$icecast_host}:{$icecast_port}/status-json.xsl";
 
-        $status_arr = json_decode($status_dat, true);
-        if ($status_arr === NULL || !isset($status_arr["icestats"]) || !isset($status_arr["icestats"]["source"]) ) {
-            return FALSE;
-        }
+    $context = stream_context_create([
+        'http' => [
+            'timeout' => 3,
+            'ignore_errors' => true,
+        ]
+    ]);
 
-        $date = new \DateTime($status_arr["icestats"]["source"]['stream_start'], new \DateTimeZone('UTC'));
-        $date->setTimezone(new \DateTimeZone('Europe/Zurich'));
+    $status_dat = @file_get_contents($status_url, false, $context);
 
-        $status_arr["icestats"]["source"]['stream_start'] = $date->format('D d.m.Y H:i');
-
-        return $status_arr["icestats"]["source"];
+    if ($status_dat === false) {
+        return false;
     }
-  
+
+    $status_arr = json_decode($status_dat, true);
+
+    if (
+        !is_array($status_arr) ||
+        !isset($status_arr['icestats']['source'])
+    ) {
+        return false;
+    }
+
+    $sources = $status_arr['icestats']['source'];
+
+    // One stream: convert it to an array of sources
+    if (isset($sources['listenurl'])) {
+        $sources = [$sources];
+    }
+
+    // Find requested mountpoint
+    foreach ($sources as $source) {
+
+        if (
+            isset($source['listenurl']) &&
+            parse_url($source['listenurl'], PHP_URL_PATH) === $mount
+        ) {
+
+            // Convert stream start time
+            if (!empty($source['stream_start'])) {
+                $date = new \DateTime(
+                    $source['stream_start'],
+                    new \DateTimeZone('UTC')
+                );
+
+                $date->setTimezone(
+                    new \DateTimeZone('Europe/Zurich')
+                );
+
+                $source['stream_start'] = $date->format('D d.m.Y H:i');
+            }
+
+            return $source;
+        }
+    }
+
+    return false;
 }
 
 // Trigger initialization
